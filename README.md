@@ -32,3 +32,6 @@
 | `fastify`              | Fast web framework for Node.js.                      |
 | `@fastify/swagger`     | Swagger/OpenAPI plugin for Fastify.                  |
 | `zod`                  | Schema validation library for TypeScript.            |
+
+## Swagger
+- Swagger UI available in `/docs` route
