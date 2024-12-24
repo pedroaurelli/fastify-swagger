@@ -1,5 +1,8 @@
 # Node.JS app (Fastify) auto documented by Swagger
 
+## Objective
+- The objective of this project is not to create a new API. I was testing some project structures to validate the input and output values from the controller. I applied knowledge from all the API projects I have worked on and merged only the best practices that I consider essential for any API project. This includes: route documentation, input and output value validation, tests (coming soon), directory structure, some SOLID principles, and Design Patterns.
+
 ## Project Structure
 - [**src**](https://github.com/pedroaurelli/fastify-swager/tree/main/src)
   - [**controllers**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/controllers)
