@@ -1,4 +1,4 @@
-import { GetUserByIdParams, getUserByIdParamsSchema, GetUserByIdResult, getUserByIdResultSchema } from '../../lib/schemas/get-user-by-id'
+import { GetUserByIdParams, getUserByIdParamsSchema, GetUserByIdResult, getUserByIdResultSchema } from '../../lib/schemas/get-user-by-id-schema'
 import { User } from '../../lib/types/user'
 import { NotFoundError } from '../../lib/utils/errors'
 

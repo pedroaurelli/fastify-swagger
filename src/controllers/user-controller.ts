@@ -1,11 +1,16 @@
 import { FastifyInstance } from '../lib/types/fastify-instance'
 import { ICreateUserRoute, createUserRouteSchema } from '../lib/schemas/create-user-schema'
-import { createUserService, getUsersService, getUserByIdService, updateUserByIdService } from '../services'
 import { getUsersRouteSchema, IGetUsersRoute } from '../lib/schemas/get-users-schema'
-import { getUserByIdRouteSchema, IGetUserByIdRoute } from '../lib/schemas/get-user-by-id'
+import { getUserByIdRouteSchema, IGetUserByIdRoute } from '../lib/schemas/get-user-by-id-schema'
 import { IUpdateUserByIdRoute, updateUserByIdRouteSchema } from '../lib/schemas/update-user-by-id-schema'
 import { deleteUserByIdRouteSchema, IDeleteUserByIdRoute } from '../lib/schemas/delete-user-by-id-schema'
-import { deleteUserByIdService } from '../services/delete-user-by-id-service/delete-user-by-id-service'
+import {
+  createUserService,
+  getUsersService,
+  getUserByIdService,
+  updateUserByIdService,
+  deleteUserByIdService
+} from '../services'
 
 type User = {
   id: string
