@@ -1,12 +1,13 @@
-import { CreateUserCommand, createUserCommandSchema, CreateUserResult, createUserResultSchema } from '../../lib/schemas/create-user-schema'
-import { User } from '../../lib/types/user'
+import { createUserDefinition } from '../../lib/definitions/create-user-definition'
+import { User } from '../../lib/schemas/user-schema'
 import { randomUUID } from 'node:crypto'
+import { DefinitionSchema } from '../../lib/types/definition'
 
 export async function createUserService(
-  command: CreateUserCommand,
+  command: DefinitionSchema<typeof createUserDefinition.body>,
   users: User[]
-): Promise<CreateUserResult> {
-  const { email, name } = createUserCommandSchema.parse(command)
+): Promise<DefinitionSchema<typeof createUserDefinition.response[201]>> {
+  const { email, name } = createUserDefinition.body.parse(command)
 
   const newUser: User = {
     email,
@@ -16,5 +17,5 @@ export async function createUserService(
 
   users.push(newUser)
 
-  return createUserResultSchema.parse(newUser)
+  return newUser
 }

@@ -1,14 +1,15 @@
-import { updateUserByIdCommand, UpdateUserByIdCommand, UpdateUserByIdParams, updateUserByIdParamsSchema, UpdateUserByIdResult } from '../../lib/schemas/update-user-by-id-schema'
-import { User } from '../../lib/types/user'
+import { updateUserByIdDefinition } from '../../lib/definitions/update-user-by-id-definition'
+import { User } from '../../lib/schemas/user-schema'
+import { DefinitionSchema } from '../../lib/types/definition'
 import { ConflictError, NotFoundError } from '../../lib/utils/errors'
 
 export async function updateUserByIdService(
-  command: UpdateUserByIdCommand,
-  params: UpdateUserByIdParams,
+  command: DefinitionSchema<typeof updateUserByIdDefinition.body>,
+  params: DefinitionSchema<typeof updateUserByIdDefinition.params>,
   users: User[]
-): Promise<UpdateUserByIdResult> {
-  const { email, name } = updateUserByIdCommand.parse(command)
-  const { id } = updateUserByIdParamsSchema.parse(params)
+): Promise<DefinitionSchema<typeof updateUserByIdDefinition.response[200]>> {
+  const { email, name } = updateUserByIdDefinition.body.parse(command)
+  const { id } = updateUserByIdDefinition.params.parse(params)
 
   const user = users.find((user) => user.id === id)
 

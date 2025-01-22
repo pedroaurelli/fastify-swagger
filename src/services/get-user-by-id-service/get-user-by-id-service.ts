@@ -1,12 +1,13 @@
-import { GetUserByIdParams, getUserByIdParamsSchema, GetUserByIdResult, getUserByIdResultSchema } from '../../lib/schemas/get-user-by-id-schema'
-import { User } from '../../lib/types/user'
+import { getUserByIdDefinition } from '../../lib/definitions/get-user-by-id-definition'
+import { User } from '../../lib/schemas/user-schema'
+import { DefinitionSchema } from '../../lib/types/definition'
 import { NotFoundError } from '../../lib/utils/errors'
 
 export async function getUserByIdService (
-  params: GetUserByIdParams,
+  params: DefinitionSchema<typeof getUserByIdDefinition.params>,
   users: User[]
-): Promise<GetUserByIdResult> {
-  const { id } = getUserByIdParamsSchema.parse(params)
+): Promise<DefinitionSchema<typeof getUserByIdDefinition.response[200]>> {
+  const { id } = getUserByIdDefinition.params.parse(params)
 
   const result = users.find((user) => user.id === id)
 
@@ -14,5 +15,5 @@ export async function getUserByIdService (
     throw new NotFoundError('User not found')
   }
 
-  return getUserByIdResultSchema.parse(result)
+  return result
 }

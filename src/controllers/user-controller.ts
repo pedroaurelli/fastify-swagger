@@ -1,9 +1,9 @@
 import { FastifyInstance } from '../lib/types/fastify-instance'
-import { ICreateUserRoute, createUserRouteSchema } from '../lib/schemas/create-user-schema'
-import { getUsersRouteSchema, IGetUsersRoute } from '../lib/schemas/get-users-schema'
-import { getUserByIdRouteSchema, IGetUserByIdRoute } from '../lib/schemas/get-user-by-id-schema'
-import { IUpdateUserByIdRoute, updateUserByIdRouteSchema } from '../lib/schemas/update-user-by-id-schema'
-import { deleteUserByIdRouteSchema, IDeleteUserByIdRoute } from '../lib/schemas/delete-user-by-id-schema'
+import { ICreateUserRoute, createUserDefinition } from '../lib/definitions/create-user-definition'
+import { getUsersDefinition, IGetUsersRoute } from '../lib/definitions/get-users-definition'
+import { getUserByIdDefinition, IGetUserByIdRoute } from '../lib/definitions/get-user-by-id-definition'
+import { IUpdateUserByIdRoute, updateUserByIdDefinition } from '../lib/definitions/update-user-by-id-definition'
+import { deleteUserByIdDefinition, IDeleteUserByIdRoute } from '../lib/definitions/delete-user-by-id-definition'
 import {
   createUserService,
   getUsersService,
@@ -22,7 +22,7 @@ const users: User[] = []
 
 export async function userController(app: FastifyInstance) {
   app.get<IGetUsersRoute>('/users', {
-    schema: getUsersRouteSchema,
+    schema: getUsersDefinition,
   }, async (req, res) => {
     try {
       const result = await getUsersService(req.query, users)
@@ -34,7 +34,7 @@ export async function userController(app: FastifyInstance) {
   })
 
   app.get<IGetUserByIdRoute>(`/users/:id`, {
-    schema: getUserByIdRouteSchema
+    schema: getUserByIdDefinition
   }, async (req, res) => {
     try {
       const result = await getUserByIdService(req.params, users)
@@ -46,7 +46,7 @@ export async function userController(app: FastifyInstance) {
   })
 
   app.patch<IUpdateUserByIdRoute>(`/users/:id`, {
-    schema: updateUserByIdRouteSchema
+    schema: updateUserByIdDefinition
   }, async (req, res) => {
     try {
       const result = await updateUserByIdService(req.body, req.params, users)
@@ -58,7 +58,7 @@ export async function userController(app: FastifyInstance) {
   })
 
   app.post<ICreateUserRoute>('/users', {
-    schema: createUserRouteSchema,
+    schema: createUserDefinition,
   }, async (req, res) => {
     try {
       const result = await createUserService(req.body, users)
@@ -70,7 +70,7 @@ export async function userController(app: FastifyInstance) {
   })
 
   app.delete<IDeleteUserByIdRoute>('/users/:id', {
-    schema: deleteUserByIdRouteSchema
+    schema: deleteUserByIdDefinition
   }, async (req, res) => {
     try {
       await deleteUserByIdService(req.params, users)

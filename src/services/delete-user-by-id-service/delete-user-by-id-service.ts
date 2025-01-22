@@ -1,12 +1,13 @@
-import { deleteUserByIdParams, DeleteUserByIdParams } from '../../lib/schemas/delete-user-by-id-schema'
-import { User } from '../../lib/types/user'
+import { deleteUserByIdDefinition } from '../../lib/definitions/delete-user-by-id-definition'
+import { User } from '../../lib/schemas/user-schema'
+import { DefinitionSchema } from '../../lib/types/definition'
 import { NotFoundError } from '../../lib/utils/errors'
 
 export async function deleteUserByIdService(
-  params: DeleteUserByIdParams,
+  params: DefinitionSchema<typeof deleteUserByIdDefinition.params>,
   users: User[]
-): Promise<void> {
-  const { id } = deleteUserByIdParams.parse(params)
+): Promise<DefinitionSchema<typeof deleteUserByIdDefinition.response[204]>> {
+  const { id } = deleteUserByIdDefinition.params.parse(params)
 
   const userIndex = users.findIndex((user) => user.id === id)
 

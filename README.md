@@ -7,16 +7,18 @@
 - [**src**](https://github.com/pedroaurelli/fastify-swager/tree/main/src)
   - [**controllers**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/controllers)
   - [**lib**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib)
+    - [definitions](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib/definitions)
     - [schemas](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib/schemas)
     - [types](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib/types)
     - [utils](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib/utils)
   - [**services**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/services)
 
-| **Folder**                                                                                         | **Description**                                                                                  |
-|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| **Folder** | **Description** |
+|-------|---------|
 | [**src**](https://github.com/pedroaurelli/fastify-swager/tree/main/src)                            | Root folder of the project's source code.                                                       |
 | [**controllers**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/controllers)        | Contains controllers responsible for handling route requests and responses.                     |
 | [**lib**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib)                        | Folder with libraries and auxiliary resources for the project.                                  |
+| [**definitions**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib/definitions)            | Define endpoint schema.                                                  |
 | [**schemas**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib/schemas)            | Defines validation and data structure schemas.                                                  |
 | [**types**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib/types)                | Contains type and interface definitions for the project.                                        |
 | [**utils**](https://github.com/pedroaurelli/fastify-swager/tree/main/src/lib/utils)                | Includes utility functions and helpers to support core functionalities.                         |
@@ -26,6 +28,7 @@
 | **Script** | **Description**                                         |
 |------------|---------------------------------------------------------|
 | `dev`      | Runs the server in development mode|
+| `build` | Build app to production |
 
 ## Packages
 | **Dependency**         | **Description**                                      |

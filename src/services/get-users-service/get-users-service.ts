@@ -1,12 +1,13 @@
-import { GetUsersQuery, GetUsersResult, getUsersParamsSchema, getUsersResultSchema } from '../../lib/schemas/get-users-schema'
-import { User } from '../../lib/types/user'
+import { getUsersDefinition } from '../../lib/definitions/get-users-definition'
+import { User } from '../../lib/schemas/user-schema'
+import { DefinitionSchema } from '../../lib/types/definition'
 
 
 export async function getUsersService (
-  params: GetUsersQuery,
+  queryString: DefinitionSchema<typeof getUsersDefinition.querystring>,
   users: User[]
-): Promise<GetUsersResult> {
-  const { query } = getUsersParamsSchema.parse(params)
+): Promise<DefinitionSchema<typeof getUsersDefinition.response['200']>> {
+  const { query } = getUsersDefinition.querystring.parse(queryString)
 
   if (query) {
     const result = users.filter(user => user.name.includes(query))
@@ -14,5 +15,5 @@ export async function getUsersService (
     return result
   }
 
-  return getUsersResultSchema.parse(users)
+  return users
 }
